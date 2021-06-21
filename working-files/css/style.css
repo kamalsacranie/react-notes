@@ -1,0 +1,54 @@
+/* =============Predefined CSS================= */
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+/* =============Tooltip CSS================= */
+
+.tooltip {
+  position: relative;
+  color: #990099;
+  .base * {
+    color: #990099;
+  }
+}
+.tooltiptext {
+  position: absolute;
+  
+  /* basic styles */
+  min-width:7cm;
+  padding:10px;
+  border-radius:10px;
+  background:rgb(244, 119, 244);
+  color: #000;
+  text-align: left;
+
+  display:none;
+
+  .base * {
+    color: black;
+  }
+
+}
+.tooltip:hover .tooltiptext {
+  display:block;
+  z-index: 1;
+}
+
+.tooltip:hover {
+  background-color: yellow;
+  border-radius: 5px;
+}
