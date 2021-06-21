@@ -1,5 +1,6 @@
 # Additional
 .DS_Store
+find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch
 
 # History files
 .Rhistory
