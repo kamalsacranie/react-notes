@@ -1,14 +1,16 @@
 --- 
-title: "Django Notes"
+title: "React Notes"
 author: "Kamal Sacranie"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-documentclass: report # Makes the latex preamble contain \documentclass{report} which is my preferred layout
+documentclass: report
 bibliography: [../sources/book.bib]
 biblio-style: apalike
 link-citations: yes
 geometry: margin=2cm # Changing the margins in the latex output
-description: "My Django notes to stop me forgetting how to use it after not coding for like two months"
+description: "My react notes"
 ---
 
 # Preface {-}
+
+These are my react notes.
