@@ -1,0 +1,77 @@
+# Create state without Redux
+
+To create state without Redux, we can create a component containing the data we
+want to use and import the `useState` function from React:
+
+```{r setting-state}
+```
+
+```javascript
+import { useState } from 'react'
+
+const Data = () => {
+	const [data, setData] = useState(<myObjectOfData>)
+	
+	return (
+		<>
+			{data.map((task) => (
+				<li key={data.id}>{data.text}</li>
+			))}
+		</>
+	)
+}
+```
+
+- Here we are importing `useState` and then using it to properly assign data to a variable
+- We also use the map function to basically perform a for each loop on our data and then pass in the function we want to perform with each entry of data
+- We also pass in a `key` attribute which is required for React
+
+We don't typically want our data in to be in one component however, so we typically use Redux to create a state which is avaialbe to all of our components. For small projects which we don't want to use Redux for, we can put the data in our `App.js` file to emulate a global state and pass it through as props to our components.
+
+To update our immutable state we use `setData` which we defined in \@ref(exm:setting-state) which is a funciton that we can use with `filter()` to change our state. Basically if we want to do something like this we can Google it on the spot.
+
+> If you set the state within your functional component using `useState()` it is what is known as component level state.
+
+## The `useState` function
+
+What the `useState` function actually does is:
+
+1. It takes in our default state, and returns an array with 2 entries.
+1. The first element is **our state** which we passed into `useState` and the
+   second element is **a function which allows us to update our state later**
+
+An example of how we would update our sate would be if we did the following in
+`App.js`:
+
+```javascript
+import { useState } from 'react'
+
+function App() {
+	const [count, setCount] = useStata(4)
+
+	const decrementCount = () => {
+		setCount(previousCount => prevCount - 1)
+	}
+
+	return (
+		<>
+			<button onClick={decrementCount}>-</button>
+			<span>{count}</span>
+			<button>+</button>
+		</>
+	)
+}
+```
+
+- Here we **desructure** our array response from `useState` into `count` and
+	`setCount`.
+- We then create a function which runs on the click of the button which
+	decreases our count
+- When the page loads, we load in our default state which is `4`
+- Every time we call the `decrementCount` our component rerenders our component
+- Any time you are modifying your state incrementally you must pass in a
+	function to our `setCount` function which is what the react docs say
+
+Use state can also take a function input which atually **only runs once** which
+is good for the performance of our webpage. For this to happen you have to pass
+the function directly in and not reference the function.

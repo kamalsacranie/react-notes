@@ -1,0 +1,25 @@
+# Stles
+
+## In-line styles
+
+If we are going to add styles inline in one of our React componenets, we can use the fact that JSX allows for HTML/CSS. This is donw within a tag using double curly braces:
+
+```javascript
+const Component = () => {
+	return (
+		<h1 style={{ backgroundColor: 'black', color: 'red' }}>
+		</h1>
+	)
+```
+
+- Note here that we use double curly braces
+- We also have CSS elements in camelCase
+- Style elements are also seperated by `,` not  `;`
+
+## Via a variable in the same JS file
+
+This is pretty self explanitary. We can just create an object somewhere else in our JS document and add the style inline using the constant keyword that we created.
+
+## Using a CSS file
+
+Using a CSS file is pretty simple, you just relate the link in your `index.html` file.

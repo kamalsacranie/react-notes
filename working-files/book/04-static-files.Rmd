@@ -1,0 +1,11 @@
+# Static assets
+
+If we are ready to deploy, we can run `npm run build` which creates a build in
+a folder called build. Basically all our react gets converted to vanilla JS
+which we can deploy. So basically we would deploy the files in the build
+folder.
+
+You can go about deploying your files in many different ways. Anything that
+hosts JS, HTML, and CSS static files can host regular react apps. If you have a
+database, it becomes a bit harder to host because you need a server to run your
+backend.

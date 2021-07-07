@@ -136,3 +136,9 @@ Header.defaultProps = {
 
 We can also `import PropTypes form 'prop-types'` to typeset your props using KVPs in the object `MyComponent.propTypes = {title: PropType.string}`
 
+### Componenets in components
+
+It is simple to have components within components, all you have to do is
+perform the relative import in your current component and the component will be
+in the same directory so its just `'./Component`.
+
