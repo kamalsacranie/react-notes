@@ -14,3 +14,24 @@ description: "My react notes"
 # Preface {-}
 
 These are my react notes.
+
+## What is React?
+
+React is a library for building UI:
+
+- React runs on the client as a single page application abut can be used to
+  build full stack apps by communicating with an API
+- React is a frontend framework
+- React has a whole bunch of plugins that allow you to do a lote more
+
+## Why use react
+
+React allows the best way to build your UI using different components which
+allows for very dynamic HTML within JavaScript. It does this using JSX (which
+is extended JS). React uses what is called the Virtual DOM which allows us to
+have a more dymic environment etc.
+
+With react, you’ll look at your UI as a bunch of components which you will
+write code for.
+
+

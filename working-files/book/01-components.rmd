@@ -1,0 +1,138 @@
+## Creating a React app
+
+To create our boilerplate code, we want to use something called 'Create React App'.
+
+To install this we want to run `npx create-react-app <app-name>`. This uses the node package manager so **Node must be installed**. This sets up our frontend.
+
+In these created files we have `package.json` which tells us exactly what dependencies/addons are installed in React and we **change this when we add an extension** (this wil ususally be in the docs of the extension)
+
+### What we get in our boilerplate
+
+We get an `index.html` which basically just has a body tag with `<div id="root"></div>` which is basically the crux of how our React app gets rendered.
+
+In the `src` folder, inside the `index.js` which is our front-most part of our React app, we grab the `root` elemtent from our `index.html` and render our `<App />`. This `<App />` tag comes from importing our root app from `App.js` which houses all of our components. Basically:
+
+```mermaid
+graph LR:
+	A[Components] -> B[App.js]
+	B -> C[index.js]
+	C -> D[index.html]
+```
+
+### Starting up our dev server
+
+You must change directory into your React app folder and then we can run  `npm start` which will start our server on **localhost:3000**.
+
+## Components
+
+In react, you can create components with funcitons and classes. The more common
+way these days is to **use functions**. Class components extend other classes.
+
+Your basic functional component looks as follows:
+
+```javascript
+let myVar;
+
+export const Header = () => {
+	return (
+		<some HTML>
+			{myVar}
+			{1 + 2} // This will render as 3
+		</some HTML>
+	)
+}
+```
+
+- Because we use the component in other `.js` files, we use the `export` keyword to denote that we are exporting the component for use elsewhere.
+- We are also using arrow funciton here
+- Note that the return is returning HTML. This isn't really HTML but rather JSX (JavaScript Syntax Extension) which allows us to use HTML and any JS expression to make our pseudo-HTML dynamic.
+- We also see that we can have JS varaibels inside curly braces
+- You must also only return one single top level element
+
+You can also pass in 'props' to your components which allows you to pass data into your components which can be used.
+
+Components have what is known as 'state' which is an object that determines how a component renders and behaves. This could be a value like 'opne' or 'close'. Sometimes you want App level state which referes to state that is available to the entire UI and not just a single component. This is done through Redux.
+
+
+> In React and JSX, we **have clashes** of HTML tag attributes like `class` and `for`, to get around this we use `className` and `htmlFor` respectively.
+
+### Creating components
+
+We create our components inside our `src` file inside a `components` file as `.js` files.
+
+You can use VSCode snippets addon to create the boilerplate for a component which will look as follows:
+
+```{r component-boilerplate}
+```
+
+```javascript
+const MyComponent = () => {
+	return (
+		<html>
+		</html>	
+	)
+}
+
+export default MyComponent
+```
+
+> Note that we name our components in proper case.
+
+We must then import it into our `App.js`:
+
+```javascript
+import MyComponent from './componennets/MyComponent'
+
+function App() {
+	return (
+		<div>
+			<MyComponent /> // calling our component here
+		</div>
+	)
+}
+```
+- Notice here that when we import we use quotes for te path name
+- We **call our component with `<ComponentName />`**
+
+## Props
+
+Props are basically parameters for your functional componenets which are **passed in through the tag**. We can access it in our component as an object.
+
+```javascript
+const MyComponent = (props) => {
+	return (
+		<html>
+			<h1></h1>
+		</html>	
+	)
+}
+
+// ====== In the file where we call the component ====
+
+<MyComponent title='Hello'>
+```
+
+- As you can see, you do not need to expliclity define `title` but can pass it in and access it from a dictionary.
+
+### Default props
+
+We can have default props for our components by doing the following:
+
+```javascript
+const MyComponent = ({ title }) => {
+	return (
+		<html>
+			<h1>title</h1>
+		</html>	
+	)
+}
+
+Header.defaultProps = {
+	title: 'My Title'
+}
+```
+
+- Note that here we have descructured the object by using the {} which allows us to just directly access title.
+
+We can also `import PropTypes form 'prop-types'` to typeset your props using KVPs in the object `MyComponent.propTypes = {title: PropType.string}`
+
