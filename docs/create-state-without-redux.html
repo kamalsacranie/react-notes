@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -191,19 +199,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Create state without Redux</h1>
 <p>To create state without Redux, we can create a component containing the data we
 want to use and import the <code>useState</code> function from React:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="create-state-without-redux.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
-<span id="cb8-2"><a href="create-state-without-redux.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="create-state-without-redux.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Data <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb8-4"><a href="create-state-without-redux.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [data<span class="op">,</span> setData] <span class="op">=</span> <span class="fu">useState</span>(<span class="op">&lt;</span>myObjectOfData<span class="op">&gt;</span>)</span>
-<span id="cb8-5"><a href="create-state-without-redux.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-6"><a href="create-state-without-redux.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb8-7"><a href="create-state-without-redux.html#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
-<span id="cb8-8"><a href="create-state-without-redux.html#cb8-8" aria-hidden="true" tabindex="-1"></a>            {data<span class="op">.</span><span class="fu">map</span>((task) <span class="kw">=&gt;</span> (</span>
-<span id="cb8-9"><a href="create-state-without-redux.html#cb8-9" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>li key<span class="op">=</span>{data<span class="op">.</span><span class="at">id</span>}<span class="op">&gt;</span>{data<span class="op">.</span><span class="at">text</span>}<span class="op">&lt;/</span>li<span class="op">&gt;</span></span>
-<span id="cb8-10"><a href="create-state-without-redux.html#cb8-10" aria-hidden="true" tabindex="-1"></a>            ))}</span>
-<span id="cb8-11"><a href="create-state-without-redux.html#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
-<span id="cb8-12"><a href="create-state-without-redux.html#cb8-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-13"><a href="create-state-without-redux.html#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="create-state-without-redux.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb7-2"><a href="create-state-without-redux.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="create-state-without-redux.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Data <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb7-4"><a href="create-state-without-redux.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [data<span class="op">,</span> setData] <span class="op">=</span> <span class="fu">useState</span>(<span class="op">&lt;</span>myObjectOfData<span class="op">&gt;</span>)</span>
+<span id="cb7-5"><a href="create-state-without-redux.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="create-state-without-redux.html#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb7-7"><a href="create-state-without-redux.html#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb7-8"><a href="create-state-without-redux.html#cb7-8" aria-hidden="true" tabindex="-1"></a>            {data<span class="op">.</span><span class="fu">map</span>((task) <span class="kw">=&gt;</span> (</span>
+<span id="cb7-9"><a href="create-state-without-redux.html#cb7-9" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>li key<span class="op">=</span>{data<span class="op">.</span><span class="at">id</span>}<span class="op">&gt;</span>{data<span class="op">.</span><span class="at">text</span>}<span class="op">&lt;/</span>li<span class="op">&gt;</span></span>
+<span id="cb7-10"><a href="create-state-without-redux.html#cb7-10" aria-hidden="true" tabindex="-1"></a>            ))}</span>
+<span id="cb7-11"><a href="create-state-without-redux.html#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb7-12"><a href="create-state-without-redux.html#cb7-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-13"><a href="create-state-without-redux.html#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Here we are importing <code>useState</code> and then using it to properly assign data to a variable</li>
 <li>We also use the map function to basically perform a for each loop on our data and then pass in the function we want to perform with each entry of data</li>
@@ -224,23 +232,23 @@ second element is <strong>a function which allows us to update our state later</
 </ol>
 <p>An example of how we would update our sate would be if we did the following in
 <code>App.js</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="create-state-without-redux.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
-<span id="cb9-2"><a href="create-state-without-redux.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="create-state-without-redux.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
-<span id="cb9-4"><a href="create-state-without-redux.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useStata</span>(<span class="dv">4</span>)</span>
-<span id="cb9-5"><a href="create-state-without-redux.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="create-state-without-redux.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> decrementCount <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb9-7"><a href="create-state-without-redux.html#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">setCount</span>(previousCount <span class="kw">=&gt;</span> prevCount <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb9-8"><a href="create-state-without-redux.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-9"><a href="create-state-without-redux.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="create-state-without-redux.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb9-11"><a href="create-state-without-redux.html#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
-<span id="cb9-12"><a href="create-state-without-redux.html#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{decrementCount}<span class="op">&gt;-&lt;/</span>button<span class="op">&gt;</span></span>
-<span id="cb9-13"><a href="create-state-without-redux.html#cb9-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>span<span class="op">&gt;</span>{count}<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
-<span id="cb9-14"><a href="create-state-without-redux.html#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button<span class="op">&gt;+&lt;/</span>button<span class="op">&gt;</span></span>
-<span id="cb9-15"><a href="create-state-without-redux.html#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
-<span id="cb9-16"><a href="create-state-without-redux.html#cb9-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-17"><a href="create-state-without-redux.html#cb9-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="create-state-without-redux.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb8-2"><a href="create-state-without-redux.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="create-state-without-redux.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb8-4"><a href="create-state-without-redux.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useStata</span>(<span class="dv">4</span>)</span>
+<span id="cb8-5"><a href="create-state-without-redux.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="create-state-without-redux.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> decrementCount <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-7"><a href="create-state-without-redux.html#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">setCount</span>(previousCount <span class="kw">=&gt;</span> prevCount <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb8-8"><a href="create-state-without-redux.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-9"><a href="create-state-without-redux.html#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="create-state-without-redux.html#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb8-11"><a href="create-state-without-redux.html#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb8-12"><a href="create-state-without-redux.html#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{decrementCount}<span class="op">&gt;-&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb8-13"><a href="create-state-without-redux.html#cb8-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>span<span class="op">&gt;</span>{count}<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb8-14"><a href="create-state-without-redux.html#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button<span class="op">&gt;+&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb8-15"><a href="create-state-without-redux.html#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb8-16"><a href="create-state-without-redux.html#cb8-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-17"><a href="create-state-without-redux.html#cb8-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Here we <strong>desructure</strong> our array response from <code>useState</code> into <code>count</code> and
 <code>setCount</code>.</li>
@@ -260,17 +268,17 @@ the function directly in and not reference the function.</p>
 <p>Use effect basically handles side effects and it takes a function as an
 argument. <code>useEffect</code> is commonly used with asyn await to get a response from a
 backend like for example when using Django we would do the fillowing:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="create-state-without-redux.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb10-2"><a href="create-state-without-redux.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="create-state-without-redux.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">// code</span></span>
-<span id="cb10-4"><a href="create-state-without-redux.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="create-state-without-redux.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb10-6"><a href="create-state-without-redux.html#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> fetchData <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb10-7"><a href="create-state-without-redux.html#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> axios<span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;path/to/endpoint&#39;</span>)</span>
-<span id="cb10-8"><a href="create-state-without-redux.html#cb10-8" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb10-9"><a href="create-state-without-redux.html#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetchData</span>()</span>
-<span id="cb10-10"><a href="create-state-without-redux.html#cb10-10" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> [])</span>
-<span id="cb10-11"><a href="create-state-without-redux.html#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="create-state-without-redux.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb9-2"><a href="create-state-without-redux.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="create-state-without-redux.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">// code</span></span>
+<span id="cb9-4"><a href="create-state-without-redux.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="create-state-without-redux.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb9-6"><a href="create-state-without-redux.html#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> fetchData <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb9-7"><a href="create-state-without-redux.html#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> axios<span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;path/to/endpoint&#39;</span>)</span>
+<span id="cb9-8"><a href="create-state-without-redux.html#cb9-8" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-9"><a href="create-state-without-redux.html#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetchData</span>()</span>
+<span id="cb9-10"><a href="create-state-without-redux.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> [])</span>
+<span id="cb9-11"><a href="create-state-without-redux.html#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Basically we’ve fetched the data from our backend to use in our React
 component. We have then called the <code>fetchData</code> function to got our data</li>

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.6.21)  13 JUL 2021 03:07
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.6.21)  13 JUL 2021 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -988,47 +988,51 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 202.
+File: react-notes_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type p
+df)
+<use react-notes_files/figure-latex/unnamed-chunk-1-1.pdf>
 [3
 
-] [4]
-Underfull \hbox (badness 2065) in paragraph at lines 339--340
+]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 197.
+[4]
+Underfull \hbox (badness 2065) in paragraph at lines 334--335
 []\TU/lmr/m/n/10 We can also \TU/lmtt/m/n/10 import PropTypes form []prop-types
 [] \TU/lmr/m/n/10 to typeset your props using KVPs in the object
  []
 
-[5]
+[5] [6]
 Chapter 2.
-[6
+[7
 
 ]
 Chapter 3.
 
-LaTeX Warning: Reference `exm:setting-state' on page 7 undefined on input line 
-422.
+LaTeX Warning: Reference `exm:setting-state' on page 8 undefined on input line 
+417.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 429.
-[7
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 424.
+[8
 
-] [8]
+] [9]
 Chapter 4.
-[9
+[10
 
 ]
 Chapter 5.
 
-Overfull \hbox (16.67603pt too wide) in paragraph at lines 541--543
+Overfull \hbox (16.67603pt too wide) in paragraph at lines 536--538
 []\TU/lmr/m/n/10 When we want to create a route we need to \TU/lmtt/m/n/10 impo
 rt { BrowserRouter as Router, Route} from []react-router-dom\TU/lmr/m/n/10 .
  []
 
-[10
+[11
 
 ]
 No file react-notes.bbl.
-[11] (./react-notes.aux)
+[12] (./react-notes.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1036,12 +1040,12 @@ Package rerunfilecheck Info: File `react-notes.out' has not changed.
 (rerunfilecheck)             Checksum: 57B22CC0012237B79BDC0D8A1BB7DF4F;2245.
  ) 
 Here is how much of TeX's memory you used:
- 17422 strings out of 478442
- 306805 string characters out of 5856923
- 784381 words of memory out of 5000000
- 37526 multiletter control sequences out of 15000+600000
+ 17432 strings out of 478442
+ 307275 string characters out of 5856923
+ 784382 words of memory out of 5000000
+ 37533 multiletter control sequences out of 15000+600000
  409897 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 87i,6n,120p,422b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,6n,120p,422b,392s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on react-notes.pdf (12 pages).
+Output written on react-notes.pdf (13 pages).

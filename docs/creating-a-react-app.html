@@ -53,6 +53,14 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -196,10 +204,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.0.1</span> What we get in our boilerplate</h3>
 <p>We get an <code>index.html</code> which basically just has a body tag with <code>&lt;div id="root"&gt;&lt;/div&gt;</code> which is basically the crux of how our React app gets rendered.</p>
 <p>In the <code>src</code> folder, inside the <code>index.js</code> which is our front-most part of our React app, we grab the <code>root</code> elemtent from our <code>index.html</code> and render our <code>&lt;App /&gt;</code>. This <code>&lt;App /&gt;</code> tag comes from importing our root app from <code>App.js</code> which houses all of our components. Basically:</p>
-<pre class="mermaid"><code>graph LR:
-    A[Components] -&gt; B[App.js]
-    B -&gt; C[index.js]
-    C -&gt; D[index.html]</code></pre>
+<div id="htmlwidget-b88891708fee72b641d7" style="width:672px;height:100px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b88891708fee72b641d7">{"x":{"diagram":"\n           graph LR\n\t         A[Components] --> B[App.js]\n\t         B --> C[index.js]\n\t         C --> D[index.html]\n           "},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="starting-up-our-dev-server" class="section level3" number="1.0.2">
 <h3><span class="header-section-number">1.0.2</span> Starting up our dev server</h3>
@@ -210,16 +216,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In react, you can create components with funcitons and classes. The more common
 way these days is to <strong>use functions</strong>. Class components extend other classes.</p>
 <p>Your basic functional component looks as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="creating-a-react-app.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myVar<span class="op">;</span></span>
-<span id="cb2-2"><a href="creating-a-react-app.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="creating-a-react-app.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Header <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb2-4"><a href="creating-a-react-app.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb2-5"><a href="creating-a-react-app.html#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>some HTML<span class="op">&gt;</span></span>
-<span id="cb2-6"><a href="creating-a-react-app.html#cb2-6" aria-hidden="true" tabindex="-1"></a>            {myVar}</span>
-<span id="cb2-7"><a href="creating-a-react-app.html#cb2-7" aria-hidden="true" tabindex="-1"></a>            {<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>} <span class="co">// This will render as 3</span></span>
-<span id="cb2-8"><a href="creating-a-react-app.html#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>some HTML<span class="op">&gt;</span></span>
-<span id="cb2-9"><a href="creating-a-react-app.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-10"><a href="creating-a-react-app.html#cb2-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="creating-a-react-app.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myVar<span class="op">;</span></span>
+<span id="cb1-2"><a href="creating-a-react-app.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="creating-a-react-app.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> Header <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-4"><a href="creating-a-react-app.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb1-5"><a href="creating-a-react-app.html#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>some HTML<span class="op">&gt;</span></span>
+<span id="cb1-6"><a href="creating-a-react-app.html#cb1-6" aria-hidden="true" tabindex="-1"></a>            {myVar}</span>
+<span id="cb1-7"><a href="creating-a-react-app.html#cb1-7" aria-hidden="true" tabindex="-1"></a>            {<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>} <span class="co">// This will render as 3</span></span>
+<span id="cb1-8"><a href="creating-a-react-app.html#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>some HTML<span class="op">&gt;</span></span>
+<span id="cb1-9"><a href="creating-a-react-app.html#cb1-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-10"><a href="creating-a-react-app.html#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Because we use the component in other <code>.js</code> files, we use the <code>export</code> keyword to denote that we are exporting the component for use elsewhere.</li>
 <li>We are also using arrow funciton here</li>
@@ -236,27 +242,27 @@ way these days is to <strong>use functions</strong>. Class components extend oth
 <h3><span class="header-section-number">1.1.1</span> Creating components</h3>
 <p>We create our components inside our <code>src</code> file inside a <code>components</code> file as <code>.js</code> files.</p>
 <p>You can use VSCode snippets addon to create the boilerplate for a component which will look as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="creating-a-react-app.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb3-2"><a href="creating-a-react-app.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb3-3"><a href="creating-a-react-app.html#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
-<span id="cb3-4"><a href="creating-a-react-app.html#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
-<span id="cb3-5"><a href="creating-a-react-app.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-6"><a href="creating-a-react-app.html#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-7"><a href="creating-a-react-app.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="creating-a-react-app.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> MyComponent</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="creating-a-react-app.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb2-2"><a href="creating-a-react-app.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb2-3"><a href="creating-a-react-app.html#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="creating-a-react-app.html#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
+<span id="cb2-5"><a href="creating-a-react-app.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-6"><a href="creating-a-react-app.html#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="creating-a-react-app.html#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="creating-a-react-app.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> MyComponent</span></code></pre></div>
 <blockquote>
 <p>Note that we name our components in proper case.</p>
 </blockquote>
 <p>We must then import it into our <code>App.js</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="creating-a-react-app.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> MyComponent <span class="im">from</span> <span class="st">&#39;./componennets/MyComponent&#39;</span></span>
-<span id="cb4-2"><a href="creating-a-react-app.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="creating-a-react-app.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
-<span id="cb4-4"><a href="creating-a-react-app.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb4-5"><a href="creating-a-react-app.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>div<span class="op">&gt;</span></span>
-<span id="cb4-6"><a href="creating-a-react-app.html#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>MyComponent <span class="op">/&gt;</span> <span class="co">// calling our component here</span></span>
-<span id="cb4-7"><a href="creating-a-react-app.html#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
-<span id="cb4-8"><a href="creating-a-react-app.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-9"><a href="creating-a-react-app.html#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="creating-a-react-app.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> MyComponent <span class="im">from</span> <span class="st">&#39;./componennets/MyComponent&#39;</span></span>
+<span id="cb3-2"><a href="creating-a-react-app.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="creating-a-react-app.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb3-4"><a href="creating-a-react-app.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb3-5"><a href="creating-a-react-app.html#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>div<span class="op">&gt;</span></span>
+<span id="cb3-6"><a href="creating-a-react-app.html#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>MyComponent <span class="op">/&gt;</span> <span class="co">// calling our component here</span></span>
+<span id="cb3-7"><a href="creating-a-react-app.html#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb3-8"><a href="creating-a-react-app.html#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-9"><a href="creating-a-react-app.html#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Notice here that when we import we use quotes for te path name</li>
 <li>We <strong>call our component with <code>&lt;ComponentName /&gt;</code></strong></li>
@@ -266,34 +272,34 @@ way these days is to <strong>use functions</strong>. Class components extend oth
 <div id="props" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Props</h2>
 <p>Props are basically parameters for your functional componenets which are <strong>passed in through the tag</strong>. We can access it in our component as an object.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="creating-a-react-app.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> (props) <span class="kw">=&gt;</span> {</span>
-<span id="cb5-2"><a href="creating-a-react-app.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb5-3"><a href="creating-a-react-app.html#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
-<span id="cb5-4"><a href="creating-a-react-app.html#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>h1<span class="op">&gt;&lt;/</span>h1<span class="op">&gt;</span></span>
-<span id="cb5-5"><a href="creating-a-react-app.html#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
-<span id="cb5-6"><a href="creating-a-react-app.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-7"><a href="creating-a-react-app.html#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-8"><a href="creating-a-react-app.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="creating-a-react-app.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">// ====== In the file where we call the component ====</span></span>
-<span id="cb5-10"><a href="creating-a-react-app.html#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="creating-a-react-app.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>MyComponent title<span class="op">=</span><span class="st">&#39;Hello&#39;</span><span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="creating-a-react-app.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> (props) <span class="kw">=&gt;</span> {</span>
+<span id="cb4-2"><a href="creating-a-react-app.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb4-3"><a href="creating-a-react-app.html#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
+<span id="cb4-4"><a href="creating-a-react-app.html#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>h1<span class="op">&gt;&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb4-5"><a href="creating-a-react-app.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
+<span id="cb4-6"><a href="creating-a-react-app.html#cb4-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-7"><a href="creating-a-react-app.html#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="creating-a-react-app.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="creating-a-react-app.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">// ====== In the file where we call the component ====</span></span>
+<span id="cb4-10"><a href="creating-a-react-app.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="creating-a-react-app.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>MyComponent title<span class="op">=</span><span class="st">&#39;Hello&#39;</span><span class="op">&gt;</span></span></code></pre></div>
 <ul>
 <li>As you can see, you do not need to expliclity define <code>title</code> but can pass it in and access it from a dictionary.</li>
 </ul>
 <div id="default-props" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Default props</h3>
 <p>We can have default props for our components by doing the following:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="creating-a-react-app.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> ({ title }) <span class="kw">=&gt;</span> {</span>
-<span id="cb6-2"><a href="creating-a-react-app.html#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
-<span id="cb6-3"><a href="creating-a-react-app.html#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
-<span id="cb6-4"><a href="creating-a-react-app.html#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>h1<span class="op">&gt;</span>title<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
-<span id="cb6-5"><a href="creating-a-react-app.html#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
-<span id="cb6-6"><a href="creating-a-react-app.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-7"><a href="creating-a-react-app.html#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-8"><a href="creating-a-react-app.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="creating-a-react-app.html#cb6-9" aria-hidden="true" tabindex="-1"></a>Header<span class="op">.</span><span class="at">defaultProps</span> <span class="op">=</span> {</span>
-<span id="cb6-10"><a href="creating-a-react-app.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> <span class="st">&#39;My Title&#39;</span></span>
-<span id="cb6-11"><a href="creating-a-react-app.html#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="creating-a-react-app.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> MyComponent <span class="op">=</span> ({ title }) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-2"><a href="creating-a-react-app.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb5-3"><a href="creating-a-react-app.html#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>html<span class="op">&gt;</span></span>
+<span id="cb5-4"><a href="creating-a-react-app.html#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>h1<span class="op">&gt;</span>title<span class="op">&lt;/</span>h1<span class="op">&gt;</span></span>
+<span id="cb5-5"><a href="creating-a-react-app.html#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>html<span class="op">&gt;</span> </span>
+<span id="cb5-6"><a href="creating-a-react-app.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-7"><a href="creating-a-react-app.html#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-8"><a href="creating-a-react-app.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="creating-a-react-app.html#cb5-9" aria-hidden="true" tabindex="-1"></a>Header<span class="op">.</span><span class="at">defaultProps</span> <span class="op">=</span> {</span>
+<span id="cb5-10"><a href="creating-a-react-app.html#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span><span class="op">:</span> <span class="st">&#39;My Title&#39;</span></span>
+<span id="cb5-11"><a href="creating-a-react-app.html#cb5-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>Note that here we have descructured the object by using the {} which allows us to just directly access title.</li>
 </ul>
