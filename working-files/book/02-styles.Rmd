@@ -1,4 +1,4 @@
-# Stles
+# Styles
 
 ## In-line styles
 

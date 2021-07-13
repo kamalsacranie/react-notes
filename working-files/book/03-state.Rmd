@@ -75,3 +75,28 @@ function App() {
 Use state can also take a function input which atually **only runs once** which
 is good for the performance of our webpage. For this to happen you have to pass
 the function directly in and not reference the function.
+
+## The `useEffect` function
+
+Use effect basically handles side effects and it takes a function as an
+argument. `useEffect` is commonly used with asyn await to get a response from a
+backend like for example when using Django we would do the fillowing:
+
+```javascript
+const App = () => {
+
+// code
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await axios.get('path/to/endpoint')
+		}
+		fetchData()
+	}, [])
+}
+```
+
+- Basically we've fetched the data from our backend to use in our React
+	component. We have then called the `fetchData` function to got our data
+- We then passin an empty array as a second argument which usually takes values
+	which we want useEffect to run when the value changes

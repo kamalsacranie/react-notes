@@ -1,4 +1,4 @@
-## Creating a React app
+# Creating a React app
 
 To create our boilerplate code, we want to use something called 'Create React App'.
 

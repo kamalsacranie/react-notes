@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Routing in React | React Notes</title>
+  <meta name="description" content="My react notes" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Routing in React | React Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="My react notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Routing in React | React Notes" />
+  
+  <meta name="twitter:description" content="My react notes" />
+  
+
+<meta name="author" content="Kamal Sacranie" />
+
+
+<meta name="date" content="2021-07-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="static-assets.html"/>
+
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="/Users/kamalsacranie/Documents/external-studies/web-development/react-notes/working-files/css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-react"><i class="fa fa-check"></i><b>0.1</b> What is React?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#why-use-react"><i class="fa fa-check"></i><b>0.2</b> Why use react</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html"><i class="fa fa-check"></i><b>1</b> Creating a React app</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#what-we-get-in-our-boilerplate"><i class="fa fa-check"></i><b>1.0.1</b> What we get in our boilerplate</a></li>
+<li class="chapter" data-level="1.0.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#starting-up-our-dev-server"><i class="fa fa-check"></i><b>1.0.2</b> Starting up our dev server</a></li>
+<li class="chapter" data-level="1.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#components"><i class="fa fa-check"></i><b>1.1</b> Components</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#creating-components"><i class="fa fa-check"></i><b>1.1.1</b> Creating components</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#props"><i class="fa fa-check"></i><b>1.2</b> Props</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#default-props"><i class="fa fa-check"></i><b>1.2.1</b> Default props</a></li>
+<li class="chapter" data-level="1.2.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#componenets-in-components"><i class="fa fa-check"></i><b>1.2.2</b> Componenets in components</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="styles.html"><a href="styles.html"><i class="fa fa-check"></i><b>2</b> Styles</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="styles.html"><a href="styles.html#in-line-styles"><i class="fa fa-check"></i><b>2.1</b> In-line styles</a></li>
+<li class="chapter" data-level="2.2" data-path="styles.html"><a href="styles.html#via-a-variable-in-the-same-js-file"><i class="fa fa-check"></i><b>2.2</b> Via a variable in the same JS file</a></li>
+<li class="chapter" data-level="2.3" data-path="styles.html"><a href="styles.html#using-a-css-file"><i class="fa fa-check"></i><b>2.3</b> Using a CSS file</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html"><i class="fa fa-check"></i><b>3</b> Create state without Redux</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html#the-usestate-function"><i class="fa fa-check"></i><b>3.1</b> The <code>useState</code> function</a></li>
+<li class="chapter" data-level="3.2" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html#the-useeffect-function"><i class="fa fa-check"></i><b>3.2</b> The <code>useEffect</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="static-assets.html"><a href="static-assets.html"><i class="fa fa-check"></i><b>4</b> Static assets</a></li>
+<li class="chapter" data-level="5" data-path="routing-in-react.html"><a href="routing-in-react.html"><i class="fa fa-check"></i><b>5</b> Routing in React</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="routing-in-react.html"><a href="routing-in-react.html#react-links"><i class="fa fa-check"></i><b>5.1</b> React links</a></li>
+<li class="chapter" data-level="5.2" data-path="routing-in-react.html"><a href="routing-in-react.html#uselocation"><i class="fa fa-check"></i><b>5.2</b> <code>useLocation</code></a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">React Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="routing-in-react" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Routing in React</h1>
+<p>Natively we cannot rout with react and I’m sure there is some way to use Django
+for routing but it’s easier to just use react router dom. We just need to <code>npm install react-router-dom</code> which will automatically show up in our <code>package.json</code>which enables us to route.</p>
+<p>When we want to create a route we need to <code>import { BrowserRouter as Router, Route} from 'react-router-dom</code>. Then we will wrap our whole return statement in
+<code>App.js</code> in the <code>&lt;Router&gt;</code> tag which allows us to then use <code>Route</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="routing-in-react.html#cb11-1" aria-hidden="true" tabindex="-1"></a>cont App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb11-2"><a href="routing-in-react.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb11-3"><a href="routing-in-react.html#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>Router<span class="op">&gt;</span></span>
+<span id="cb11-4"><a href="routing-in-react.html#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="co">// HTML</span></span>
+<span id="cb11-5"><a href="routing-in-react.html#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>Route </span>
+<span id="cb11-6"><a href="routing-in-react.html#cb11-6" aria-hidden="true" tabindex="-1"></a>                path<span class="op">=</span><span class="st">&#39;/&#39;</span> </span>
+<span id="cb11-7"><a href="routing-in-react.html#cb11-7" aria-hidden="true" tabindex="-1"></a>                exact </span>
+<span id="cb11-8"><a href="routing-in-react.html#cb11-8" aria-hidden="true" tabindex="-1"></a>                render<span class="op">=</span>{(props) <span class="kw">=&gt;</span> (<span class="co">// what you want to render)}</span></span>
+<span id="cb11-9"><a href="routing-in-react.html#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">/&gt;</span></span>
+<span id="cb11-10"><a href="routing-in-react.html#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&#39;/about&#39;</span> components<span class="op">=</span>{About} <span class="op">/&gt;</span></span>
+<span id="cb11-11"><a href="routing-in-react.html#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/</span>Router<span class="op">&gt;</span></span>
+<span id="cb11-12"><a href="routing-in-react.html#cb11-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-13"><a href="routing-in-react.html#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>This basically allows us to selectively render stuff depending on the path so
+in essence your webapp is a single page application. This would render
+something when we match the <strong>exact</strong> route of <code>/</code> and then when the route is
+<code>/about</code> we would get the about component rendered.</p>
+<div id="react-links" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> React links</h2>
+<p>This allows us to not reload the page when routing with React. We do this
+directly in the component concerned like if we had an about component which
+directed us to the home page, we would:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="routing-in-react.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { Link } <span class="im">from</span> <span class="st">&#39;react-router-dom&#39;</span></span>
+<span id="cb12-2"><a href="routing-in-react.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="routing-in-react.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> About <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb12-4"><a href="routing-in-react.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb12-5"><a href="routing-in-react.html#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb12-6"><a href="routing-in-react.html#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>Link to<span class="op">=</span><span class="st">&#39;/&#39;</span><span class="op">&gt;</span>Home<span class="op">&lt;/</span>Link<span class="op">&gt;</span></span>
+<span id="cb12-7"><a href="routing-in-react.html#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb12-8"><a href="routing-in-react.html#cb12-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb12-9"><a href="routing-in-react.html#cb12-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>This would just take us home and not force us to reload the page like we
+would with an anchor tag</p>
+</blockquote>
+</div>
+<div id="uselocation" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> <code>useLocation</code></h2>
+<p>This allows us to use the current URL to selectively render elements depending
+on our route. We would <code>import { useLocation } from 'react-router-dom'</code> and
+then define a variable which just runs the function which gives us access to
+the path name and we can use a conditional to show something depending on the
+path.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="static-assets.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["react-notes.pdf", "react-notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

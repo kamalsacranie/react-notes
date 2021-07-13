@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Create state without Redux | React Notes</title>
+  <meta name="description" content="My react notes" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Create state without Redux | React Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="My react notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Create state without Redux | React Notes" />
+  
+  <meta name="twitter:description" content="My react notes" />
+  
+
+<meta name="author" content="Kamal Sacranie" />
+
+
+<meta name="date" content="2021-07-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="styles.html"/>
+<link rel="next" href="static-assets.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="/Users/kamalsacranie/Documents/external-studies/web-development/react-notes/working-files/css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-react"><i class="fa fa-check"></i><b>0.1</b> What is React?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#why-use-react"><i class="fa fa-check"></i><b>0.2</b> Why use react</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html"><i class="fa fa-check"></i><b>1</b> Creating a React app</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#what-we-get-in-our-boilerplate"><i class="fa fa-check"></i><b>1.0.1</b> What we get in our boilerplate</a></li>
+<li class="chapter" data-level="1.0.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#starting-up-our-dev-server"><i class="fa fa-check"></i><b>1.0.2</b> Starting up our dev server</a></li>
+<li class="chapter" data-level="1.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#components"><i class="fa fa-check"></i><b>1.1</b> Components</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#creating-components"><i class="fa fa-check"></i><b>1.1.1</b> Creating components</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#props"><i class="fa fa-check"></i><b>1.2</b> Props</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#default-props"><i class="fa fa-check"></i><b>1.2.1</b> Default props</a></li>
+<li class="chapter" data-level="1.2.2" data-path="creating-a-react-app.html"><a href="creating-a-react-app.html#componenets-in-components"><i class="fa fa-check"></i><b>1.2.2</b> Componenets in components</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="styles.html"><a href="styles.html"><i class="fa fa-check"></i><b>2</b> Styles</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="styles.html"><a href="styles.html#in-line-styles"><i class="fa fa-check"></i><b>2.1</b> In-line styles</a></li>
+<li class="chapter" data-level="2.2" data-path="styles.html"><a href="styles.html#via-a-variable-in-the-same-js-file"><i class="fa fa-check"></i><b>2.2</b> Via a variable in the same JS file</a></li>
+<li class="chapter" data-level="2.3" data-path="styles.html"><a href="styles.html#using-a-css-file"><i class="fa fa-check"></i><b>2.3</b> Using a CSS file</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html"><i class="fa fa-check"></i><b>3</b> Create state without Redux</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html#the-usestate-function"><i class="fa fa-check"></i><b>3.1</b> The <code>useState</code> function</a></li>
+<li class="chapter" data-level="3.2" data-path="create-state-without-redux.html"><a href="create-state-without-redux.html#the-useeffect-function"><i class="fa fa-check"></i><b>3.2</b> The <code>useEffect</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="static-assets.html"><a href="static-assets.html"><i class="fa fa-check"></i><b>4</b> Static assets</a></li>
+<li class="chapter" data-level="5" data-path="routing-in-react.html"><a href="routing-in-react.html"><i class="fa fa-check"></i><b>5</b> Routing in React</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="routing-in-react.html"><a href="routing-in-react.html#react-links"><i class="fa fa-check"></i><b>5.1</b> React links</a></li>
+<li class="chapter" data-level="5.2" data-path="routing-in-react.html"><a href="routing-in-react.html#uselocation"><i class="fa fa-check"></i><b>5.2</b> <code>useLocation</code></a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">React Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="create-state-without-redux" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Create state without Redux</h1>
+<p>To create state without Redux, we can create a component containing the data we
+want to use and import the <code>useState</code> function from React:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="create-state-without-redux.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb8-2"><a href="create-state-without-redux.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="create-state-without-redux.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Data <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb8-4"><a href="create-state-without-redux.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [data<span class="op">,</span> setData] <span class="op">=</span> <span class="fu">useState</span>(<span class="op">&lt;</span>myObjectOfData<span class="op">&gt;</span>)</span>
+<span id="cb8-5"><a href="create-state-without-redux.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-6"><a href="create-state-without-redux.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb8-7"><a href="create-state-without-redux.html#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb8-8"><a href="create-state-without-redux.html#cb8-8" aria-hidden="true" tabindex="-1"></a>            {data<span class="op">.</span><span class="fu">map</span>((task) <span class="kw">=&gt;</span> (</span>
+<span id="cb8-9"><a href="create-state-without-redux.html#cb8-9" aria-hidden="true" tabindex="-1"></a>                <span class="op">&lt;</span>li key<span class="op">=</span>{data<span class="op">.</span><span class="at">id</span>}<span class="op">&gt;</span>{data<span class="op">.</span><span class="at">text</span>}<span class="op">&lt;/</span>li<span class="op">&gt;</span></span>
+<span id="cb8-10"><a href="create-state-without-redux.html#cb8-10" aria-hidden="true" tabindex="-1"></a>            ))}</span>
+<span id="cb8-11"><a href="create-state-without-redux.html#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb8-12"><a href="create-state-without-redux.html#cb8-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-13"><a href="create-state-without-redux.html#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Here we are importing <code>useState</code> and then using it to properly assign data to a variable</li>
+<li>We also use the map function to basically perform a for each loop on our data and then pass in the function we want to perform with each entry of data</li>
+<li>We also pass in a <code>key</code> attribute which is required for React</li>
+</ul>
+<p>We don’t typically want our data in to be in one component however, so we typically use Redux to create a state which is avaialbe to all of our components. For small projects which we don’t want to use Redux for, we can put the data in our <code>App.js</code> file to emulate a global state and pass it through as props to our components.</p>
+<p>To update our immutable state we use <code>setData</code> which we defined in <a href="#exm:setting-state"><strong>??</strong></a> which is a funciton that we can use with <code>filter()</code> to change our state. Basically if we want to do something like this we can Google it on the spot.</p>
+<blockquote>
+<p>If you set the state within your functional component using <code>useState()</code> it is what is known as component level state.</p>
+</blockquote>
+<div id="the-usestate-function" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> The <code>useState</code> function</h2>
+<p>What the <code>useState</code> function actually does is:</p>
+<ol style="list-style-type: decimal">
+<li>It takes in our default state, and returns an array with 2 entries.</li>
+<li>The first element is <strong>our state</strong> which we passed into <code>useState</code> and the
+second element is <strong>a function which allows us to update our state later</strong></li>
+</ol>
+<p>An example of how we would update our sate would be if we did the following in
+<code>App.js</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="create-state-without-redux.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
+<span id="cb9-2"><a href="create-state-without-redux.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="create-state-without-redux.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb9-4"><a href="create-state-without-redux.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> [count<span class="op">,</span> setCount] <span class="op">=</span> <span class="fu">useStata</span>(<span class="dv">4</span>)</span>
+<span id="cb9-5"><a href="create-state-without-redux.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="create-state-without-redux.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> decrementCount <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb9-7"><a href="create-state-without-redux.html#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">setCount</span>(previousCount <span class="kw">=&gt;</span> prevCount <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-8"><a href="create-state-without-redux.html#cb9-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-9"><a href="create-state-without-redux.html#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="create-state-without-redux.html#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
+<span id="cb9-11"><a href="create-state-without-redux.html#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;&gt;</span></span>
+<span id="cb9-12"><a href="create-state-without-redux.html#cb9-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button onClick<span class="op">=</span>{decrementCount}<span class="op">&gt;-&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb9-13"><a href="create-state-without-redux.html#cb9-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>span<span class="op">&gt;</span>{count}<span class="op">&lt;/</span>span<span class="op">&gt;</span></span>
+<span id="cb9-14"><a href="create-state-without-redux.html#cb9-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">&lt;</span>button<span class="op">&gt;+&lt;/</span>button<span class="op">&gt;</span></span>
+<span id="cb9-15"><a href="create-state-without-redux.html#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;/&gt;</span></span>
+<span id="cb9-16"><a href="create-state-without-redux.html#cb9-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-17"><a href="create-state-without-redux.html#cb9-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Here we <strong>desructure</strong> our array response from <code>useState</code> into <code>count</code> and
+<code>setCount</code>.</li>
+<li>We then create a function which runs on the click of the button which
+decreases our count</li>
+<li>When the page loads, we load in our default state which is <code>4</code></li>
+<li>Every time we call the <code>decrementCount</code> our component rerenders our component</li>
+<li>Any time you are modifying your state incrementally you must pass in a
+function to our <code>setCount</code> function which is what the react docs say</li>
+</ul>
+<p>Use state can also take a function input which atually <strong>only runs once</strong> which
+is good for the performance of our webpage. For this to happen you have to pass
+the function directly in and not reference the function.</p>
+</div>
+<div id="the-useeffect-function" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> The <code>useEffect</code> function</h2>
+<p>Use effect basically handles side effects and it takes a function as an
+argument. <code>useEffect</code> is commonly used with asyn await to get a response from a
+backend like for example when using Django we would do the fillowing:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="create-state-without-redux.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> App <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-2"><a href="create-state-without-redux.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="create-state-without-redux.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">// code</span></span>
+<span id="cb10-4"><a href="create-state-without-redux.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="create-state-without-redux.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useEffect</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb10-6"><a href="create-state-without-redux.html#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> fetchData <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-7"><a href="create-state-without-redux.html#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> axios<span class="op">.</span><span class="fu">get</span>(<span class="st">&#39;path/to/endpoint&#39;</span>)</span>
+<span id="cb10-8"><a href="create-state-without-redux.html#cb10-8" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb10-9"><a href="create-state-without-redux.html#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetchData</span>()</span>
+<span id="cb10-10"><a href="create-state-without-redux.html#cb10-10" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span> [])</span>
+<span id="cb10-11"><a href="create-state-without-redux.html#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Basically we’ve fetched the data from our backend to use in our React
+component. We have then called the <code>fetchData</code> function to got our data</li>
+<li>We then passin an empty array as a second argument which usually takes values
+which we want useEffect to run when the value changes</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="styles.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="static-assets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["react-notes.pdf", "react-notes.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

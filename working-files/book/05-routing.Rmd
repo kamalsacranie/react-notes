@@ -1,0 +1,59 @@
+# Routing in React
+
+Natively we cannot rout with react and I'm sure there is some way to use Django
+for routing but it's easier to just use react router dom. We just need to `npm
+install react-router-dom` which will automatically show up in our `package.json`which enables us to route.
+
+When we want to create a route we need to `import { BrowserRouter as Router,
+Route} from 'react-router-dom`. Then we will wrap our whole return statement in
+`App.js` in the `<Router>` tag which allows us to then use `Route`:
+
+```javascript
+cont App = () => {
+	return (
+		<Router>
+			// HTML
+			<Route 
+				path='/' 
+				exact 
+				render={(props) => (// what you want to render)}
+			/>
+			<Route path='/about' components={About} />
+		</Router>
+	)
+}
+```
+
+This basically allows us to selectively render stuff depending on the path so
+in essence your webapp is a single page application. This would render
+something when we match the **exact** route of `/` and then when the route is
+`/about` we would get the about component rendered.
+
+## React links
+
+This allows us to not reload the page when routing with React. We do this
+directly in the component concerned like if we had an about component which
+directed us to the home page, we would:
+
+```javascript
+import { Link } from 'react-router-dom'
+
+const About = () => {
+	return (
+		<>
+			<Link to='/'>Home</Link>
+		</>
+	)
+}
+```
+
+> This would just take us home and not force us to reload the page like we
+> would with an anchor tag
+
+## `useLocation`
+
+This allows us to use the current URL to selectively render elements depending
+on our route. We would `import { useLocation } from 'react-router-dom'` and
+then define a variable which just runs the function which gives us access to
+the path name and we can use a conditional to show something depending on the
+path.
