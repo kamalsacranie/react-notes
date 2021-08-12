@@ -24,7 +24,7 @@
 <meta name="author" content="Kamal Sacranie" />
 
 
-<meta name="date" content="2021-07-13" />
+<meta name="date" content="2021-07-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,6 +199,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Create state without Redux</h1>
 <p>To create state without Redux, we can create a component containing the data we
 want to use and import the <code>useState</code> function from React:</p>
+
+<div class="example">
+<span id="exm:setting-state" class="example"><strong>Example 3.1  </strong></span>
+</div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="create-state-without-redux.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span></span>
 <span id="cb7-2"><a href="create-state-without-redux.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="create-state-without-redux.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Data <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
@@ -218,7 +222,7 @@ want to use and import the <code>useState</code> function from React:</p>
 <li>We also pass in a <code>key</code> attribute which is required for React</li>
 </ul>
 <p>We don’t typically want our data in to be in one component however, so we typically use Redux to create a state which is avaialbe to all of our components. For small projects which we don’t want to use Redux for, we can put the data in our <code>App.js</code> file to emulate a global state and pass it through as props to our components.</p>
-<p>To update our immutable state we use <code>setData</code> which we defined in <a href="#exm:setting-state"><strong>??</strong></a> which is a funciton that we can use with <code>filter()</code> to change our state. Basically if we want to do something like this we can Google it on the spot.</p>
+<p>To update our immutable state we use <code>setData</code> which we defined in <a href="create-state-without-redux.html#exm:setting-state">3.1</a> which is a funciton that we can use with <code>filter()</code> to change our state. Basically if we want to do something like this we can Google it on the spot.</p>
 <blockquote>
 <p>If you set the state within your functional component using <code>useState()</code> it is what is known as component level state.</p>
 </blockquote>

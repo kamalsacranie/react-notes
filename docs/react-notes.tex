@@ -4,10 +4,14 @@
 %
 \documentclass[
 ]{report}
+\title{React Notes}
+\author{Kamal Sacranie}
+\date{2021-07-27}
+
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -111,16 +115,29 @@
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{multicol}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{React Notes}
-\author{Kamal Sacranie}
-\date{2021-07-13}
-
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -383,6 +400,10 @@ Using a CSS file is pretty simple, you just relate the link in your \texttt{inde
 
 To create state without Redux, we can create a component containing the data we
 want to use and import the \texttt{useState} function from React:
+
+\begin{example}
+\protect\hypertarget{exm:setting-state}{}{\label{exm:setting-state} }
+\end{example}
 
 \begin{Shaded}
 \begin{Highlighting}[]

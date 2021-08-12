@@ -3,7 +3,7 @@
 To create state without Redux, we can create a component containing the data we
 want to use and import the `useState` function from React:
 
-```{r setting-state}
+```{example setting-state}
 ```
 
 ```javascript

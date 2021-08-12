@@ -138,6 +138,26 @@ Header.defaultProps = {
 
 We can also `import PropTypes form 'prop-types'` to typeset your props using KVPs in the object `MyComponent.propTypes = {title: PropType.string}`
 
+#### Children default prop
+
+A very useful default prop is the `children` default prop which is what
+actually enables us to use our component like a regular tag, i.e:
+
+    `<MyComponent>{component text/inner HTML}</MyComponent>`.
+
+This allows us to pass through HTML and for style to be applied etc. The
+component would be defined like this:
+
+```{javascript}
+const MyComponent = ({ children }) => {
+  return (
+    <div>
+      {children} 
+    </div>
+  );
+}
+```
+
 ### Componenets in components
 
 It is simple to have components within components, all you have to do is
